@@ -10,13 +10,9 @@
 1. [Extract your AWS credentials:](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication) <br/> <br/>
    1. Select the **Command line or programmatic access** option <br/>  <br/>
    ![alt text](SDDC-Deployment/images/aws_credentials_step1.png) <br/>  <br/>
-   1. Copy the credentials from **option 3** for further use   <br/>  <br/>
+   1. Copy the credentials from **macOS or linux / windows / powershell** for further use   <br/>  <br/>
    ![alt text](SDDC-Deployment/images/aws_credentials_step2.png)
 2. [Generate a VMware Cloud token](https://docs.vmware.com/en/VMware-Cloud-services/services/Using-VMware-Cloud-Services/GUID-E2A3B1C1-E9AD-4B00-A6B6-88D31FCDDF7C.html) (with NSX Cloud admin & administrator rights)
-3. Navigate to the phase1 directory, and insert your variables in terraform.tfvars. For a detailed explanation in the variables, check XXXX
-
-
-
 
 
 ## 1. Deploying an SDDC in VMWare Cloud on AWS
@@ -24,18 +20,19 @@
 ![alt text](SDDC-Deployment/images/vmc_on_aws.png)
 1. Create a file called phase1/terraform.tfvars, and insert the following:
 ```
-aws_account_number        = ""
-sddc_a_connected_vpc_cidr = ""
-vmc_refresh_token         = ""
-Org                       = ""
-sddc_a_name               = ""
-vmc_org_id                = ""
-sddc_a_region             = ""
+aws_account_number        = "" # Your AWS billing account number
+sddc_a_connected_vpc_cidr = "" # The CIDR of the AWS VPC that will be created
+vmc_refresh_token         = "" # The VMC access token that you recently created (and gave NSX-T admin rights)
+Org                       = "" # Your AWS organization name
+sddc_a_name               = "" # The name of the SDDC that will get deployed
+vmc_org_id                = "" # Your VMC organization ID
+sddc_a_region             = "" # The AWS region in which the VPC will be created
 ```
 2. Open a powershell console
-3. Navigate to the *"phase1"* directory
-4. Execute `terraform init`
-5. Execute `terraform apply`
+3. Paste the AWS credentials you coppied 
+4. Navigate to the *"phase1"* directory
+5. Execute `terraform init`
+6. Execute `terraform apply`
 
 
 ## 2. Creating NSX-T rules
@@ -43,7 +40,7 @@ sddc_a_region             = ""
 In the following phase, diverse NSX-T rules will be created
 1. Create a file called phase2/terraform.tfvars, and insert the following:
 ```
-workstation_public_ip = ""
+workstation_public_ip = "" # Your workstation's public IP address (To provide access to vSphere)
 ```
 2. Navigate to the *"SDDC-Deployment/phase2"* directory
 3. Execute `terraform init`

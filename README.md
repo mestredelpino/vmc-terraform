@@ -1,11 +1,4 @@
-# VMWare Cloud SDDC & TKG deployment with PowerCLI and Terraform
-
-This repository deploys a software defined data center (SDDC) on VMware Cloud on AWS and a Tanzu Community Edition cluster on top of it.
-
-The script consists of a phased terraform deployment which creates diverse infrastructure resources such as an SDDC, NSX-T segments and policies, a VPN tunnel with your on-premises 
-infrastructure, a TKG management cluster, a TKG compute cluster and a shared services cluster, where packages will be installed. 
-Additionally, it deploys a VPN tunnel between the VMC vSphere environment and the VLAN
-your workstation is in, which is necessary to deploy the AVI and TKG OVA/OVF Files
+# VMWare Cloud SDDC deployment with Terraform
 
 ### Setting up the environment
 
